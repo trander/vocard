@@ -5,28 +5,22 @@ var ReactDOM = require('react-dom');
 var VocaComponent = React.createClass({
   getInitialState : function() {
     return {
-      vocas: ['apple','boy', 'cinammon'],
-      level: 3
+      vocas: ['apple','boy', 'cinammon', 'dangerous']
     }
   },
   render: function() {
-    // this 
-    var levelr = setTimeout(function() {
-      this.setState({
-        level: 5
-      });
-    }.bind(this), 5000);
-
+    var vocas = this.state.vocas;
+    vocas = vocas.map(function(item, index) {
+      return (
+        <li>{item}</li>
+      )
+    })
 
     return(
       <div id='voca-list'>
         <p>Vocabulary.</p>
         <p>{this.state.level}</p>
-        <ul>
-          <li>{this.state.vocas[0]}</li>
-          <li>{this.state.vocas[1]}</li>
-          <li>{this.state.vocas[2]}</li>
-        </ul>
+        <ul>{vocas}</ul>
       </div>
     );
   }
